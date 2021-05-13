@@ -31,7 +31,7 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
             .greyscale();
         })
         .then((pic) => {
-          return card.composite(pic, 147, 200, [Jimp.BLEND_DESTINATION_OVER]);
+          return card.composite(pic, 147, 215, [Jimp.BLEND_DESTINATION_OVER]);
           // .write(`./image-processing/exports/${req.file.originalname}`);
         })
         .then((card) => {
