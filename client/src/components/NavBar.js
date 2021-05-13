@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -7,7 +7,7 @@ export default function NavBar() {
     <img src="/images/logo.jpg" alt="logo" />
       <ul>
         <li>home</li>
-        <li>FURNACE</li>
+        <li><Link to="/furnace">FURNACE</Link></li>
       </ul>
     </div>
   );

@@ -2,14 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Furnace from './components/Furnace'
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <NavBar/>
-      </header>
+     <Route exact path='/furnace' component={Furnace} />
     </div>
   );
 }
