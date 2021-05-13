@@ -7,7 +7,7 @@ let template = "./image-processing/assets/major-template.jpg";
 let hand = "./image-processing/assets/hands/one.jpg";
 
 let imgActive = "./image-processing/active/active.jpg";
-let imgExport = "./image-processing/exports/active.jpg";
+let imgExport = "./image-processing/exports/export.jpg";
 
 // router.get("/", (req, res, next) => {
 //   Jimp.read("./testImg/card-tester.jpg")
@@ -37,10 +37,10 @@ router.post("/", upload.single("file"), (req, res, next) => {
     .then((file) => {
       console.log('here is the file', file)
       return file
-        .resize(150, 150)
+        .scaleToFit(450, 450)
         .quality(100)
         .greyscale()
-        .write("./image-processing/exports/active.jpg");
+        .write(imgExport);
     })
     .then((file) => {
       res.status(200).json(file);
