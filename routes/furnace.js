@@ -3,7 +3,7 @@ const Jimp = require("jimp");
 const multer = require("multer");
 const fs = require("fs");
 const app = require("../app");
-const { test } = require("./middlewares");
+const { RandomGenerator } = require("./middlewares");
 const { write } = require("jimp");
 
 let template = "./image-processing/assets/major-template.jpg";
@@ -12,8 +12,8 @@ let imgExport = "./image-processing/exports/export.jpg";
 
 
 const upload = multer();
-router.post("/", test(), upload.single("file"), (req, res, next) => {
-  console.log(res.locals.hi);
+router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
+  console.log(res.locals.hi,res.locals.randomSuits,res.locals.randomHand);
   Jimp.read(template).then((card) => {
     Jimp.read(req.file.buffer)
       .then((pic) => {
@@ -32,12 +32,12 @@ router.post("/", test(), upload.single("file"), (req, res, next) => {
           .composite(pic, 147, 200, [Jimp.BLEND_DESTINATION_OVER])
           .write(`./image-processing/exports/${req.file.originalname}`);
       })
-      .then(() => {
-        res.status(200).json(req.file);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      // .then(() => {
+      //   res.status(200).json(req.file);
+      // })
+  })
+  .catch((err) => {
+    console.log(err);
   });
 });
 
