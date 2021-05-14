@@ -12,7 +12,6 @@ let imgExport = "./image-processing/exports/export.jpg";
 
 const upload = multer();
 router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
-  // console.log(res.locals.hi,res.locals.randomSuits,res.locals.randomHand);
   const hand = res.locals.randomHand;
   const suitOne = res.locals.randomSuits[0];
   const suitTwo = res.locals.randomSuits[1];
@@ -32,7 +31,6 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
         })
         .then((pic) => {
           return card.composite(pic, 147, 215, [Jimp.BLEND_DESTINATION_OVER]);
-          // .write(`./image-processing/exports/${req.file.originalname}`);
         })
         .then((card) => {
           Jimp.read(hand)
@@ -40,9 +38,6 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
               return card.composite(hand, 276, 720, [
                 Jimp.BLEND_DESTINATION_OVER,
               ]);
-              // .composite(suitOne, 15, 15, [Jimp.BLEND_DESTINATION_OVER])
-              // .composite(suitTwo, 565, 15, [Jimp.BLEND_DESTINATION_OVER])
-              // .write(`./image-processing/exports/${req.file.originalname}`);
             })
             .then((card) => {
               Jimp.read(suitOne)
@@ -52,22 +47,36 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
                   ]);
                 })
                 .then((card) => {
-                  Jimp.read(suitTwo).then((s2) => {
-                    return card
-                      .composite(s2, 565, 15, [Jimp.BLEND_DESTINATION_OVER])
-                      .write(
-                        `./image-processing/exports/${req.file.originalname}`
-                      );
-                  });
+                  Jimp.read(suitTwo)
+                    .then((s2) => {
+                      return card.composite(s2, 565, 15, [
+                        Jimp.BLEND_DESTINATION_OVER,
+                      ]);
+                      // .write(
+                      //   `./image-processing/exports/${req.file.originalname}`
+                      // );
+                    })
+                    .then((card) => {
+                      Jimp.loadFont(
+                        "./image-processing/assets/fonts/large/alagard.ttf.fnt"
+                      ).then((font) => {
+                        card
+                          .print(font, 225, 800, res.locals.randomVals[0])
+                          .print(font, 500, 800, res.locals.randomVals[1])
+                          .write(
+                            `./image-processing/exports/${req.file.originalname}`
+                          );
+                      });
+                    });
                 });
             });
         });
-      // .then(() => {
-      //   res.status(200).json(req.file);
-      // })
     })
+    // .then(() => {
+    //   res.status(200).json(req.file);
+    // })
     .catch((err) => {
-      console.log(err);
+      next(err);
     });
 });
 
