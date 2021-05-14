@@ -15,7 +15,7 @@ export default class jimp extends Component {
       data.append("file", file);
       axios
         .post("/api/furnace", data)
-        .then((response) => console.log('processed the file: ',response.status))
+        .then((response) => console.log('processed the file: ',response.data))
         .catch((err)=>console.log(err));
     }
   }
