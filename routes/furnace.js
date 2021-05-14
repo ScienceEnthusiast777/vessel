@@ -3,84 +3,68 @@ const Jimp = require("jimp");
 const multer = require("multer");
 const fs = require("fs");
 const app = require("../app");
-const { test } = require("./middlewares");
+const { RandomGenerator } = require("./middlewares");
 const { write } = require("jimp");
 
 let template = "./image-processing/assets/major-template.jpg";
 let hand = "./image-processing/assets/hands/one.jpg";
-
-let imgActive = "./image-processing/active/active.jpg";
 let imgExport = "./image-processing/exports/export.jpg";
 
-// router.get("/", (req, res, next) => {
-//   Jimp.read("./testImg/card-tester.jpg")
-//     .then((card) => {
-//       Jimp.read(hand)
-//         .then((h) => {
-//           return card.composite(h, 30, 30, [Jimp.BLEND_DESTINATION_OVER]);
-//         })
-//         .then((card) => {
-//           Jimp.read("./testImg/dog-edit.jpg").then((d) => {
-//             return card
-//               .composite(d, 100, 100, [Jimp.BLEND_DESTINATION_OVER])
-//               .write("./testImg/exports/poopoo.jpg");
-//           });
-//         });
-//     })
-
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// const upload = multer();
-// router.post("/", upload.single("file"), (req, res, next) => {
-//   console.log(req.file);
-//   Jimp.read(req.file.buffer)
-//     .then((file) => {
-//       console.log('here is the file', file)
-//       return file
-//         .scaleToFit(450, 450)
-//         .quality(100)
-//         .greyscale()
-//         .write(imgExport);
-//     })
-//     .then((file) => {
-//       res.status(200).json(file);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 const upload = multer();
-router.post("/", test(), upload.single("file"), (req, res, next) => {
-  console.log(res.locals.hi);
+router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
+  // console.log(res.locals.hi,res.locals.randomSuits,res.locals.randomHand);
+  const hand = res.locals.randomHand;
+  const suitOne = res.locals.randomSuits[0];
+  const suitTwo = res.locals.randomSuits[1];
   Jimp.read(template)
-    .then((tem) => {
-      tem.clone().write(`./image-processing/active/${req.file.originalname}`);
-    })
-    .then(() => {
-      console.log(
-        `temp file written to ./image-processing/active/${req.file.originalname}`
-      );
-    })
-    .then(() => {
-      Jimp.read(`./image-processing/active/${req.file.originalname}`).then(
-        (card) => {
-          Jimp.read(req.file.buffer)
-            .then((pic) => {
-              return pic.scaleToFit(450, 450).quality(100).greyscale();
+    .then((card) => {
+      Jimp.read(req.file.buffer)
+        .then((pic) => {
+          return pic
+            .cover(
+              450,
+              450,
+              Jimp.HORIZONTAL_ALIGN_CENTER,
+              Jimp.VERTICAL_ALIGN_MIDDLE
+            )
+            .quality(100)
+            .greyscale();
+        })
+        .then((pic) => {
+          return card.composite(pic, 147, 215, [Jimp.BLEND_DESTINATION_OVER]);
+          // .write(`./image-processing/exports/${req.file.originalname}`);
+        })
+        .then((card) => {
+          Jimp.read(hand)
+            .then((hand) => {
+              return card.composite(hand, 276, 720, [
+                Jimp.BLEND_DESTINATION_OVER,
+              ]);
+              // .composite(suitOne, 15, 15, [Jimp.BLEND_DESTINATION_OVER])
+              // .composite(suitTwo, 565, 15, [Jimp.BLEND_DESTINATION_OVER])
+              // .write(`./image-processing/exports/${req.file.originalname}`);
             })
-            .then((pic) => {
-              return card
-                .composite(pic, 100, 100, [Jimp.BLEND_DESTINATION_OVER])
-                .write(`./image-processing/exports/${req.file.originalname}`);
-            })
-            .then(() => {
-              res.status(200).json(req.file);
+            .then((card) => {
+              Jimp.read(suitOne)
+                .then((s1) => {
+                  return card.composite(s1, 15, 15, [
+                    Jimp.BLEND_DESTINATION_OVER,
+                  ]);
+                })
+                .then((card) => {
+                  Jimp.read(suitTwo).then((s2) => {
+                    return card
+                      .composite(s2, 565, 15, [Jimp.BLEND_DESTINATION_OVER])
+                      .write(
+                        `./image-processing/exports/${req.file.originalname}`
+                      );
+                  });
+                });
             });
-        }
-      );
+        });
+      // .then(() => {
+      //   res.status(200).json(req.file);
+      // })
     })
     .catch((err) => {
       console.log(err);
