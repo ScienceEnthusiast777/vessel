@@ -1,6 +1,4 @@
-const { VERTICAL_ALIGN_MIDDLE } = require("jimp");
 
-const router = require("express").Router();
 
 const RandomGenerator = () => {
   return (req, res, next) => {
@@ -16,12 +14,15 @@ const RandomGenerator = () => {
       "image-processing/assets/suits/heart.jpg",
       "image-processing/assets/suits/scroll.jpg",
     ];
+    res.locals.randomVals = [
+      (Math.floor(Math.random()*6)+1),
+      (Math.floor(Math.random()*6)+1)
+    ]
     res.locals.randomSuits = [
       suits[Math.floor(Math.random() * suits.length)],
       suits[Math.floor(Math.random() * suits.length)],
     ];
     res.locals.randomHand = hands[Math.floor(Math.random() * hands.length)];
-    res.locals.hi = "howdy";
     next();
   };
 };
