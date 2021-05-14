@@ -59,22 +59,24 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
                     .then((card) => {
                       Jimp.loadFont(
                         "./image-processing/assets/fonts/large/alagard.ttf.fnt"
-                      ).then((font) => {
-                        card
-                          .print(font, 225, 800, res.locals.randomVals[0])
-                          .print(font, 500, 800, res.locals.randomVals[1])
-                          .write(
-                            `./image-processing/exports/${req.file.originalname}`
-                          );
-                      });
+                      )
+                        .then((font) => {
+                          card
+                            .print(font, 225, 800, res.locals.randomVals[0])
+                            .print(font, 500, 800, res.locals.randomVals[1])
+                            .write(
+                              `./image-processing/exports/${req.file.originalname}`
+                            );
+                        })
+                        .then(() => {
+                          res.status(200).json(req.file.name);
+                        });
                     });
                 });
             });
         });
     })
-    // .then(() => {
-    //   res.status(200).json(req.file);
-    // })
+
     .catch((err) => {
       next(err);
     });

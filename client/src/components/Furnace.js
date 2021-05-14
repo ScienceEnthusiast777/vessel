@@ -15,7 +15,7 @@ export default class jimp extends Component {
       data.append("file", file);
       axios
         .post("/api/furnace", data)
-        .then((response) => console.log('processed the file: ',response))
+        .then((response) => console.log('processed the file: ',response.status))
         .catch((err)=>console.log(err));
     }
   }
@@ -30,13 +30,15 @@ export default class jimp extends Component {
   
 
   render() {
+    let uploadButton = <></>; 
+    if(this.state.file){uploadButton = <button onClick={this.Upload}>upload</button>}
     return (
       <div>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <label htmlFor="file">File</label>
-          <input type="file" id="file" onChange={this.onChange} />
+          <input type="file" accept=".jpg,.png" id="file" onChange={this.onChange} />
         </form>
-        <button onClick={this.Upload}>upload</button>
+        {uploadButton}
       </div>
     );
   }
