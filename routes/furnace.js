@@ -13,12 +13,10 @@ let imgExport = "./image-processing/exports/export.jpg";
 let blank = "./image-processing/assets/blank.jpg";
 
 router.get("/", (req, res, next) => {
-  // var fileName = req.params.fileName + '.jpg';
   var selection = [];
   Card.aggregate([{ $sample: { size: 9 } }])
     .then((sample) => {
       selection = [...sample];
-      console.log(selection);
       Jimp.read(blank).then((background) => {
         Jimp.read(selection[0].imageData.buffer).then((s1) => {
           return background.composite(s1, 15, 15, [Jimp.BLEND_DESTINATION_OVER])

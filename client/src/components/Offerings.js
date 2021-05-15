@@ -1,61 +1,41 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Offerings extends Component {
   state = {
-    fileName: "",
+    offerings: null,
+    waiting: false,
   };
 
   Download = (e) => {
-    var today = new Date();
-    var nameForFile =
-      today.getMonth() +
-      "-" +
-      today.getDate() +
-      "-" +
-      today.getFullYear() +
-      "-" +
-      today.getHours() +
-      ":" +
-      today.getMinutes() +
-      ":" +
-      today.getSeconds();
-    this.setState({
-      fileName: nameForFile,
-    });
+    this.setState({ waiting: true });
     axios
       .get(`/api/furnace/`)
       .then((res) => {
-        console.log(res.data)
-        // const url = window.URL.createObjectURL(new Blob([res.data]));
-        // const link = document.createElement("a");
-        // link.href = url;
-        // link.setAttribute("download", "some_file_name.ext");
-        // document.body.appendChild(link);
-        // link.click();
-        // link.remove();
+        this.setState({
+          waiting: false,
+          offerings: res.data,
+        });
+        console.log(this.state.offerings)
       })
-      // axios({
-      //   url: `/api/furnace/offering/${this.state.fileName}`,
-      //   method: "GET",
-      //   responseType: "blob",
-      // })
-      //   .then((res) => {
-      //     console.log('DATA HERE:', res.data)
-      //     const url = window.URL.createObjectURL(new Blob([res.data]));
-      //     const link = document.createElement("a");
-      //     link.href = url;
-      //     link.setAttribute("download", this.state.fileName);
-      //     document.body.appendChild(link);
-      //     link.click();
-      //   })
       .catch((err) => console.log(err));
   };
 
   render() {
+    let isWaiting = <></>;
+    let toImage = <></>;
+    if (this.state.offerings) {
+      toImage = <a download="test.jpg" href={this.state.offerings}>Your Offering</a>;
+    }
+    if (this.state.waiting === true) {
+      isWaiting = <p>please wait</p>;
+    }
     return (
       <div>
         <button onClick={this.Download}>Download</button>
+        {toImage}
+        {isWaiting}
       </div>
     );
   }
