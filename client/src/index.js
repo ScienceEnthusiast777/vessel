@@ -9,10 +9,9 @@ import axios from 'axios';
 axios.get('/api/auth/loggedin')
 .then(response=>{
   const user = response.data;
-  console.log('currently logged in user: ',user)
   ReactDOM.render(
     <BrowserRouter>
-      <App />
+      <App user={user}/>
     </BrowserRouter>,
     document.getElementById('root')
   );

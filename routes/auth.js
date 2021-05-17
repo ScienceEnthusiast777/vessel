@@ -2,7 +2,8 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { json } = require("express");
+const app = require("../app");
+
 
 router.post("/signup", (req, res, next) => {
   const { username, password } = req.body;
@@ -14,7 +15,7 @@ router.post("/signup", (req, res, next) => {
   if (username === "") {
     return res
       .status(400)
-      .json({ message: "please choose a valid username (cannot be empty)" });
+      .json( {message: 'please choose a valid username (cannot be empty)' });
   }
   User.findOne({ username: username }).then((DBUser) => {
     if (DBUser !== null) {
@@ -56,7 +57,7 @@ router.post('/login', (req,res,next)=>{
       }
       return res.status(200).json(user);
     })
-  })//here?
+  })(req,res)
 });
 
 router.get('/loggedin', (req,res)=>{
@@ -65,7 +66,7 @@ router.get('/loggedin', (req,res)=>{
 
 
 router.delete('/logout', (req,res)=>{
-  req.logout; 
+  req.logout(); 
   res.status(200).json({message:'logged out'})
 })
 

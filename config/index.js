@@ -49,20 +49,13 @@ passport.use(
 );
 
 module.exports = (app) => {
-  app.set("trust proxy", 1);
-
-  app.use(
-    cors({
-      credentials: true,
-      origin: process.env.ORIGIN || "http://localhost:3000",
-    })
-  );
-
   app.use(logger("dev"));
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
+  
+  app.set("trust proxy", 1);
 
   app.use(
     session({
@@ -73,6 +66,13 @@ module.exports = (app) => {
       store: MongoStore.create({
         mongoUrl: DB_URL,
       }),
+    })
+  );
+
+  app.use(
+    cors({
+      credentials: true,
+      origin: process.env.ORIGIN || "http://localhost:3000",
     })
   );
 
