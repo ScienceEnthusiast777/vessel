@@ -7,7 +7,6 @@ import Furnace from "./components/Furnace";
 import Offerings from "./components/Offerings";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
-import LogOut from "./components/LogOut";
 
 
 class App extends React.Component{
@@ -18,11 +17,12 @@ class App extends React.Component{
 
   setUser = user =>{
     this.setState({
-      user
+      user : user
     })
   }
 
   render(){
+    console.log(this.state.user)
     return (
       <div className="App">
         <NavBar user={this.state.user} setUser={this.setUser
@@ -34,7 +34,6 @@ class App extends React.Component{
           render={props=> <SignUp setUser={this.setUser}{...props}/>} />
           <Route exact path="/login" 
           render={props=> <LogIn setUser={this.setUser}{...props}/>}/>
-          <Route exact path="/logout" component={LogOut} />
         </Switch>
       </div>
     );

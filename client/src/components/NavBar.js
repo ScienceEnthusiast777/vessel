@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logout } from '../services/auth';
 
 export default function NavBar(props) {
+
+  const logoutHandler = () =>{
+    logout().then(()=>{
+      props.setUser(null);
+    })
+  }
+
   return (
     <div className="Nav">
       <img src="/images/logo.jpg" alt="logo" />
@@ -9,7 +17,7 @@ export default function NavBar(props) {
         <li>
           <Link to="/">HOME</Link>
         </li>
-        {props.user ? (
+        {!props.user ? (
           <>
             <li>
               <Link to="/signup">SIGN UP</Link>
@@ -21,7 +29,7 @@ export default function NavBar(props) {
         ) : (
           <>
             <li>
-              <Link to="/logout">LOG OUT</Link>
+              <Link to='/' onClick={()=>logoutHandler()}>LOG OUT</Link>
             </li>
             <li>
               <Link to="/furnace">FURNACE</Link>
