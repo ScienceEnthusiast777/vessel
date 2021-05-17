@@ -67,7 +67,7 @@ router.get("/", (req, res, next) => {
       });
     })
     .catch((err) => {
-      next(err);
+      res.json(err);
     });
 });
 
@@ -134,9 +134,8 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
             });
         });
     })
-
     .catch((err) => {
-      next(err);
+      res.json(err);
     });
 });
 

@@ -4,12 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+axios.get('/api/auth/loggedin')
+.then(response=>{
+  const user = response.data;
+  console.log('currently logged in user: ',user)
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById('root')
+  );
+})
+.catch(err=>{
+  console.log(err)
+})
 
 reportWebVitals();
