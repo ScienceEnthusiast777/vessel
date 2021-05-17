@@ -10,12 +10,10 @@ export default class SignUp extends Component {
   }
 
   changeHandler = (e) =>{
-    // console.log(e.target)
     const {name, value} = e.target;
     this.setState({
       [name]:value
     });
-    // console.log(this.state.username, this.state.password)
   }
 
   submitHandler = (e) =>{
