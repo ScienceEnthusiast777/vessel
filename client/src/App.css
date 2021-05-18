@@ -10,10 +10,19 @@
   justify-content: center;
 }
 
-.NavButtons>li {
+.NavButtons>li{
+  color: black;
+  font-weight: bold;
   list-style-type: none;
   padding: 5px;
   margin: 5px;
   border: solid black  5px;
   border-radius: 15px;
+}
+
+.RuleLink{
+  padding: 5px 20px;
+  color: white;
+  background-color: black;
+  border-radius: 25px;
 }

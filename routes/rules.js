@@ -25,7 +25,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/", (req,res,next)=>{
-  Rules.find()
+  Rules.find().populate('createdBy')
   .then(rules=>{
     console.log("found rules : ", rules)
     res.status(200).json(rules);

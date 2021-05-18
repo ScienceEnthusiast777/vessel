@@ -6,7 +6,10 @@ export default function RulesPage(props) {
     <div>
       {props.rules.map(rule=>{
         return (
-          <h1 key={rule._id}>{rule.name}</h1>
+          <div key={rule._id}>
+          <h1><Link to={`/rules/${rule._id}`} className="RuleLink">{rule.name}</Link></h1>
+          <p>created by : {rule.createdBy.username}</p>
+          </div>
         )
       })}
     </div>

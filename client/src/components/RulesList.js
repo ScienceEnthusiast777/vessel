@@ -67,7 +67,7 @@ export default class RulesList extends Component {
       isLoaded = (
         <>
           <RulesPage page={this.state.page} rules={this.state.rules} />
-          {this.state.pages}
+          {`page: ${this.state.page+1}`}
         </>
       );
     }
