@@ -7,18 +7,19 @@ export default class RulesList extends Component {
     rules: [],
     page: 1,
     pages: 0,
-    loaded: false
+    loaded: false,
   };
 
   getRules = () => {
     axios
       .get("/api/rules/")
       .then((response) => {
-        let noOfPages = Math.round(response.data.length/5);
+        let sorted = response.data.sort((a,b)=>(a.name > b.name) ? 1 : ((b.name > a.name) ? -1: 0))
+        let noOfPages = Math.round(response.data.length / 5);
         this.setState({
-          rules: response.data,
+          rules: sorted,
           pages: noOfPages,
-          loaded: true
+          loaded: true,
         });
       })
       .catch((err) => {
@@ -26,30 +27,36 @@ export default class RulesList extends Component {
       });
   };
 
-  clickUpHandler = () =>{
+  clickUpHandler = () => {
+    if(this.state.pages<this.state.page+1){return;}
     this.setState({
-      page: this.state.page + 1
-    })
-  }
-  clickDownHandler = () =>{
+      page: this.state.page + 1,
+    });
+  };
+  clickDownHandler = () => {
+    if(this.state.page===1){return}
     this.setState({
-      page: this.state.page - 1
-    })
-  }
+      page: this.state.page - 1,
+    });
+  };
   componentDidMount() {
     this.getRules();
   }
-  //will need to have an on mount function...
   render() {
     let isLoaded = <></>;
-    if(this.state.loaded===true){
-      isLoaded=<><RulesPage page={this.state.page} rules={this.state.rules}/>{this.state.page}</>
-    } 
-    console.log(this.state.rules)
+    if (this.state.loaded === true) {
+      isLoaded = (
+        <>
+          <RulesPage page={this.state.page} rules={this.state.rules} />
+          {this.state.page}
+        </>
+      );
+    }
+    console.log(this.state.rules);
     return (
       <div>
-      <button onClick={this.clickDownHandler}>{this.state.page}</button>
-      <button onClick={this.clickUpHandler}>{this.state.page}</button>
+        <button onClick={this.clickDownHandler}>{this.state.page}</button>
+        <button onClick={this.clickUpHandler}>{this.state.page}</button>
         {isLoaded}
       </div>
     );
