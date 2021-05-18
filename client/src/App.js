@@ -7,6 +7,7 @@ import Offerings from "./components/Offerings";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import RulesCreate from "./components/RulesCreate"
+import RulesList from "./components/RulesList"
 import Restricted from "./components/Restricted";
 
 class App extends React.Component {
@@ -35,6 +36,11 @@ class App extends React.Component {
             path="/furnace"
             user={this.state.user}
             component={Furnace}
+          />
+           <Restricted
+            path="/ruleslist"
+            user={this.state.user}
+            component={RulesList}
           />
           <Restricted
             path="/rulescreate"

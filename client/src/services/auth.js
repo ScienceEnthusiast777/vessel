@@ -3,10 +3,11 @@ import axios from 'axios';
 const signup = (username, password) =>{
   return axios.post('/api/auth/signup', {username, password})
   .then(response=>{
+    console.log(response)
     return response.data;
   })
   .catch(err=>{
-    return err; 
+    return err.response.data; 
   })
 }
 
@@ -16,7 +17,7 @@ const login = (username, password) =>{
     return response.data;
   })
   .catch(err =>{
-    return err;
+    return err.response.data;
   })
 }
 
@@ -26,7 +27,7 @@ const logout = () =>{
     return response.data
   })
   .catch(err => {
-    return err; 
+    return err.response.data; 
   })
 }
 

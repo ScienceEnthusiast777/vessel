@@ -38,6 +38,9 @@ export default function NavBar(props) {
               <Link to="/offerings">OFFERINGS</Link>
             </li>
             <li>
+              <Link to="/ruleslist">RULES SYSTEMS</Link>
+            </li>
+            <li>
               <Link to="/rulescreate">CREATE RULES</Link>
             </li>
           </>

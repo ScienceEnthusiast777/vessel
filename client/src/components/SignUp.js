@@ -21,7 +21,6 @@ export default class SignUp extends Component {
     const {username, password} = this.state;
     signup(username,password)
     .then(response=>{
-      console.log(response)
         if(response.message){
           this.setState({
             message: response.message,
@@ -33,8 +32,8 @@ export default class SignUp extends Component {
           this.props.history.push('/');
         }
     })
-    // .catch(err=>{console.log(err)})
   }
+
   render() {
     return (
       <div>
