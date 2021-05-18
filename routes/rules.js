@@ -33,4 +33,12 @@ router.get("/", (req,res,next)=>{
   .catch(err=>res.json(err))
 })
 
+router.get("/rule/:id", (req, res, next)=>{
+  Rules.findById(req.params.id).populate('createdBy')
+  .then(rule=>{
+    res.status(200).json(rule);
+  })
+  .catch(err=>res.json(err))
+})
+
 module.exports = router;
