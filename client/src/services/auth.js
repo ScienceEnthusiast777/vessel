@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const signup = (username, password) =>{
   return axios.post('/api/auth/signup', {username, password})
-  .then(res=>{
-    return res.data;
+  .then(response=>{
+    return response.data;
   })
   .catch(err=>{
     return err; 
@@ -12,8 +12,8 @@ const signup = (username, password) =>{
 
 const login = (username, password) =>{
   return axios.post('/api/auth/login', {username, password})
-  .then(res => {
-    return res.data;
+  .then(response => {
+    return response.data;
   })
   .catch(err =>{
     return err;
@@ -22,11 +22,11 @@ const login = (username, password) =>{
 
 const logout = () =>{
   return axios.delete('/api/auth/logout')
-  .then(res=>{
-    return res.data
+  .then(response=>{
+    return response.data
   })
   .catch(err => {
-    return err.response.data 
+    return err; 
   })
 }
 

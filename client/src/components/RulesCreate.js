@@ -1,9 +1,10 @@
 import axios from "axios";
-import { response } from "express";
+// import { response } from "express";
 import React, { Component } from "react";
 
 export default class RulesCreate extends Component {
   state = {
+    message: "",
     name: "",
     explanation: "",
     createdBy: null,
@@ -11,21 +12,28 @@ export default class RulesCreate extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const {name, explanation}= this.state;
-    axios.post('/api/rules', {
-      name,
-      explanation
-    })
-    .then(response=>{
-      this.props.history.push('/');
-    })
+    const { name, explanation } = this.state;
+    axios
+      .post("/api/rules", {
+        name,
+        explanation,
+      })
+      .then((response) => {
+        if (response.message) {
+          this.setState({
+            message: response.message,
+          });
+        } else {
+          this.props.history.push("/");
+        }
+      });
   };
 
   changeHandler = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     this.setState({
-      [name]: value
-    })
+      [name]: value,
+    });
   };
 
   render() {
@@ -48,6 +56,9 @@ export default class RulesCreate extends Component {
             value={this.state.explanation}
             onChange={this.changeHandler}
           />
+          <button type="submit">CREATE RULES
+          </button>
+           {this.state.message && (<p>{this.state.message}</p>)}
         </form>
       </div>
     );

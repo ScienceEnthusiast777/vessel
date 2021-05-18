@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 
 
 import axios from "axios";
@@ -19,7 +18,6 @@ export default class Offerings extends Component {
           waiting: false,
           offerings: res.data,
         });
-        // console.log(this.state.offerings)
       })
       .catch((err) => console.log(err));
   };

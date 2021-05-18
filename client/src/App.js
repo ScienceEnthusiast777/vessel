@@ -21,7 +21,7 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log(this.state.user);
+    console.log(this.state.user);
     return (
       <div className="App">
         <NavBar user={this.state.user} setUser={this.setUser} />
