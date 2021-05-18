@@ -13,7 +13,7 @@ export default function NavBar(props) {
   return (
     <div className="Nav">
       <img src="/images/logo.jpg" alt="logo" />
-      <ul>
+      <ul className="NavButtons">
         <li>
           <Link to="/">HOME</Link>
         </li>

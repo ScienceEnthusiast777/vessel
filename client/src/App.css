@@ -2,3 +2,18 @@
   text-align: center;
 }
 
+.Nav {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.NavButtons>li {
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+  border: solid black  5px;
+  border-radius: 15px;
+}

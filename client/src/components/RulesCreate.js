@@ -1,3 +1,5 @@
+import axios from "axios";
+import { response } from "express";
 import React, { Component } from "react";
 
 export default class RulesCreate extends Component {
@@ -7,9 +9,24 @@ export default class RulesCreate extends Component {
     createdBy: null,
   };
 
-  submitHandler = (e) => {};
+  submitHandler = (e) => {
+    e.preventDefault();
+    const {name, explanation}= this.state;
+    axios.post('/api/rules', {
+      name,
+      explanation
+    })
+    .then(response=>{
+      this.props.history.push('/');
+    })
+  };
 
-  changeHandler = (e) => {};
+  changeHandler = (e) => {
+    const {name, value} = e.target;
+    this.setState({
+      [name]: value
+    })
+  };
 
   render() {
     return (
