@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-export default class RulesPage extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+export default function RulesPage(props) {
+  return (
+    <div>
+      {props.rules.map(rule=>{
+        return (
+          <h1 key={rule._id}>{rule.name}</h1>
+        )
+      })}
+    </div>
+  )
 }
+
+
