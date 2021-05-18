@@ -1,4 +1,3 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
@@ -7,6 +6,7 @@ import Furnace from "./components/Furnace";
 import Offerings from "./components/Offerings";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
+import RulesCreate from "./components/RulesCreate"
 import Restricted from "./components/Restricted";
 
 class App extends React.Component {
@@ -21,7 +21,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.user);
+    // console.log(this.state.user);
     return (
       <div className="App">
         <NavBar user={this.state.user} setUser={this.setUser} />
@@ -35,6 +35,11 @@ class App extends React.Component {
             path="/furnace"
             user={this.state.user}
             component={Furnace}
+          />
+          <Restricted
+            path="/rulescreate"
+            user={this.state.user}
+            component={RulesCreate}
           />
           <Route
             exact

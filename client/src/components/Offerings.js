@@ -19,7 +19,7 @@ export default class Offerings extends Component {
           waiting: false,
           offerings: res.data,
         });
-        console.log(this.state.offerings)
+        // console.log(this.state.offerings)
       })
       .catch((err) => console.log(err));
   };
