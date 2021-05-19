@@ -60,7 +60,7 @@ export default class Rule extends Component {
             <div key={extension._id}>
               <h2>Extension by {extension.extendedBy.username}</h2>
               <p>{extension.extension}</p>
-              {this.props.user._id === this.state.rule.createdBy._id? <><Approval history ={this.props.history} rule={this.state.rule._id} extension={extension}/></>:<></>}
+              {this.props.user._id === this.state.rule.createdBy._id && extension.approved === false ? <><Approval history ={this.props.history} rule={this.state.rule._id} extension={extension}/></>:<></>}
             </div>
           );
         });
