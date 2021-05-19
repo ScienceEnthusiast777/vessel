@@ -7,6 +7,7 @@ export default class RulesEdit extends Component {
     _id: null,
     name: "",
     explanation: "",
+    extension: "",
     message: "",
   };
 
@@ -29,11 +30,10 @@ export default class RulesEdit extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const { name, explanation } = this.state;
+    const { extension } = this.state;
     axios
-      .put(`/api/rules/rule/${this.state._id}`, {
-        name,
-        explanation,
+      .put(`/api/rules/extend/${this.state._id}`, {
+        extension,
       })
       .then((response) => {
         if (response.message) {
@@ -63,24 +63,18 @@ export default class RulesEdit extends Component {
     if (this.state._id) {
       isLoaded = (
         <>
+          <h1>{this.state.name}</h1>
+          <h3>{this.state.explanation}</h3>
           <form onSubmit={this.submitHandler}>
-            <label htmlFor="name">Name the ruleset: </label>
+            <label htmlFor="name">YOUR EXTENSION TO "{this.state.name}" </label>
             <input
               type="text"
-              name="name"
+              name="extension"
               id="name"
-              value={this.state.name}
+              value={this.state.extension}
               onChange={this.changeHandler}
             />
-            <label htmlFor="name">Explanation: </label>
-            <input
-              type="text"
-              name="explanation"
-              id="explanation"
-              value={this.state.explanation}
-              onChange={this.changeHandler}
-            />
-            <button type="submit">SUBMIT CHANGES</button>
+            <button type="submit">SUBMIT EXTENSION</button>
             {this.state.message && <p>{this.state.message}</p>}
           </form>
         </>

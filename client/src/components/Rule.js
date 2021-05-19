@@ -35,6 +35,7 @@ export default class Rule extends Component {
           <h1>{this.state.rule.name}</h1>
           <h3>{this.state.rule.explanation}</h3>
           <p>created by : {this.state.rule.createdBy.username}</p>
+          <Link to={`/extend/${this.state.rule._id}`}>EXTEND THESE RULES</Link>
         </>
       );
       if (this.props.user._id === this.state.rule.createdBy._id) {

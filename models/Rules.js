@@ -9,7 +9,7 @@ const rulesSchema = new Schema({
   },
   extensions: [
     {
-      content: String,
+      extension: String,
       extendedBy: {
         type: Schema.Types.ObjectId,
         ref: "User",

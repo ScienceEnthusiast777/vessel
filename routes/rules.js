@@ -41,4 +41,22 @@ router.get("/rule/:id", (req, res, next)=>{
   .catch(err=>res.json(err))
 })
 
+router.put("/rule/:id", (req,res,next)=>{
+  const {name, explanation} = req.body;
+  Rules.findByIdAndUpdate(req.params.id, {name, explanation}, {new: true})
+  .then((rule)=>{
+    res.status(200).json(rule)
+  })
+  .catch(err=>{res.json(err)})
+})
+
+router.put("/extend/:id",(req,res,next)=>{
+  const {extension} = req.body;
+  const extendedBy = req.user; 
+  Rules.findByIdAndUpdate(req.params.id, {$push:{extensions:{extension,extendedBy}}})
+  .then((rule)=>{
+    res.status(200).json(rule)
+  })
+  .catch(err=>{res.json(err)})
+})
 module.exports = router;
