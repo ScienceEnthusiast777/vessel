@@ -21,8 +21,10 @@
 }
 
 .RuleLink{
+  margin: 20px;
   padding: 5px 20px;
   color: white;
+  width: 500px;
   background-color: black;
   border-radius: 25px;
 }
