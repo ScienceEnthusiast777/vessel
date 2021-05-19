@@ -3,13 +3,14 @@ const Jimp = require("jimp");
 const multer = require("multer");
 // const fs = require("fs");
 // const app = require("../app");
-const { RandomGenerator } = require("./middlewares");
+const { RandomGenerator, RandomGeneratoLesser } = require("./middlewares");
 // const { write } = require("jimp");
 const Card = require("../models/Card");
 // const { base } = require("../models/Card");
 
 let template = "./image-processing/assets/major-template.jpg";
-let imgExport = "./image-processing/exports/export.jpg";
+let lesserTemplate = "./image-processing/assets/lesser/Lesser-sheet.jpg";
+// let imgExport = "./image-processing/exports/export.jpg";
 let blank = "./image-processing/assets/blank.jpg";
 
 router.get("/", (req, res, next) => {
@@ -18,52 +19,85 @@ router.get("/", (req, res, next) => {
     .then((sample) => {
       selection = [...sample];
       Jimp.read(blank).then((background) => {
-        Jimp.read(selection[0].imageData.buffer).then((s1) => {
-          return background.composite(s1, 15, 15, [Jimp.BLEND_DESTINATION_OVER])
-        })
-        .then((background)=>{
-          Jimp.read(selection[1].imageData.buffer).then((s2) => {
-            return background.composite(s2, 868, 15, [Jimp.BLEND_DESTINATION_OVER])
+        Jimp.read(selection[0].imageData.buffer)
+          .then((s1) => {
+            return background.composite(s1, 15, 15, [
+              Jimp.BLEND_DESTINATION_OVER,
+            ]);
           })
-          .then((background)=>{
-            Jimp.read(selection[2].imageData.buffer).then((s3) => {
-              return background.composite(s3, 1721, 15, [Jimp.BLEND_DESTINATION_OVER])
-            })
-            .then((background)=>{
-              Jimp.read(selection[3].imageData.buffer).then((s4) => {
-                return background.composite(s4, 15, 1234, [Jimp.BLEND_DESTINATION_OVER])
+          .then((background) => {
+            Jimp.read(selection[1].imageData.buffer)
+              .then((s2) => {
+                return background.composite(s2, 868, 15, [
+                  Jimp.BLEND_DESTINATION_OVER,
+                ]);
               })
-              .then((background)=>{
-                Jimp.read(selection[4].imageData.buffer).then((s5) => {
-                  return background.composite(s5, 868, 1234, [Jimp.BLEND_DESTINATION_OVER])
-                })
-                .then((background)=>{
-                  Jimp.read(selection[5].imageData.buffer).then((s6) => {
-                    return background.composite(s6, 1721, 1234, [Jimp.BLEND_DESTINATION_OVER])
+              .then((background) => {
+                Jimp.read(selection[2].imageData.buffer)
+                  .then((s3) => {
+                    return background.composite(s3, 1721, 15, [
+                      Jimp.BLEND_DESTINATION_OVER,
+                    ]);
                   })
-                  .then((background)=>{
-                    Jimp.read(selection[6].imageData.buffer).then((s7) => {
-                      return background.composite(s7, 15, 2454, [Jimp.BLEND_DESTINATION_OVER])
-                    })
-                    .then((background)=>{
-                      Jimp.read(selection[7].imageData.buffer).then((s8) => {
-                        return background.composite(s8, 868, 2454, [Jimp.BLEND_DESTINATION_OVER])
+                  .then((background) => {
+                    Jimp.read(selection[3].imageData.buffer)
+                      .then((s4) => {
+                        return background.composite(s4, 15, 1234, [
+                          Jimp.BLEND_DESTINATION_OVER,
+                        ]);
                       })
-                      .then((background)=>{
-                        Jimp.read(selection[8].imageData.buffer).then((s9) => {
-                          return background.composite(s9, 1721, 2454, [Jimp.BLEND_DESTINATION_OVER])
-                          .getBase64Async(Jimp.MIME_JPEG).then((base64)=>{
-                            res.status(200).json(base64);
+                      .then((background) => {
+                        Jimp.read(selection[4].imageData.buffer)
+                          .then((s5) => {
+                            return background.composite(s5, 868, 1234, [
+                              Jimp.BLEND_DESTINATION_OVER,
+                            ]);
                           })
-                        })
-                      })
-                    })
-                  })
-                })
-              })
-            })
-          })
-        })
+                          .then((background) => {
+                            Jimp.read(selection[5].imageData.buffer)
+                              .then((s6) => {
+                                return background.composite(s6, 1721, 1234, [
+                                  Jimp.BLEND_DESTINATION_OVER,
+                                ]);
+                              })
+                              .then((background) => {
+                                Jimp.read(selection[6].imageData.buffer)
+                                  .then((s7) => {
+                                    return background.composite(s7, 15, 2454, [
+                                      Jimp.BLEND_DESTINATION_OVER,
+                                    ]);
+                                  })
+                                  .then((background) => {
+                                    Jimp.read(selection[7].imageData.buffer)
+                                      .then((s8) => {
+                                        return background.composite(
+                                          s8,
+                                          868,
+                                          2454,
+                                          [Jimp.BLEND_DESTINATION_OVER]
+                                        );
+                                      })
+                                      .then((background) => {
+                                        Jimp.read(
+                                          selection[8].imageData.buffer
+                                        ).then((s9) => {
+                                          return background
+                                            .composite(s9, 1721, 2454, [
+                                              Jimp.BLEND_DESTINATION_OVER,
+                                            ])
+                                            .getBase64Async(Jimp.MIME_JPEG)
+                                            .then((base64) => {
+                                              res.status(200).json(base64);
+                                            });
+                                        });
+                                      });
+                                  });
+                              });
+                          });
+                      });
+                  });
+              });
+          });
       });
     })
     .catch((err) => {
@@ -129,6 +163,93 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
                           });
                         });
                       });
+                    });
+                });
+            });
+        });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+router.get("/lesser", RandomGeneratoLesser(), (req, res, next) => {
+  const suits = [...res.locals.randomSuits];
+  Jimp.read(lesserTemplate)
+    .then((background) => {
+      Jimp.read(suits[0])
+        .then((s1) => {
+          return background.composite(s1, 30, 30, [
+            Jimp.BLEND_DESTINATION_OVER,
+          ]);
+        })
+        .then((background) => {
+          Jimp.read(suits[1])
+            .then((s2) => {
+              return background.composite(s2, 883, 30, [
+                Jimp.BLEND_DESTINATION_OVER,
+              ]);
+            })
+            .then((background) => {
+              Jimp.read(suits[2])
+                .then((s3) => {
+                  return background.composite(s3, 1736, 30, [
+                    Jimp.BLEND_DESTINATION_OVER,
+                  ]);
+                })
+                .then((background) => {
+                  Jimp.read(suits[3])
+                    .then((s4) => {
+                      return background.composite(s4, 30, 1249, [
+                        Jimp.BLEND_DESTINATION_OVER,
+                      ]);
+                    })
+                    .then((background) => {
+                      Jimp.read(suits[4])
+                        .then((s5) => {
+                          return background.composite(s5, 883, 1249, [
+                            Jimp.BLEND_DESTINATION_OVER,
+                          ]);
+                        })
+                        .then((background) => {
+                          Jimp.read(suits[5])
+                            .then((s6) => {
+                              return background.composite(s6, 1736, 1249, [
+                                Jimp.BLEND_DESTINATION_OVER,
+                              ]);
+                            })
+                            .then((background) => {
+                              Jimp.read(suits[6])
+                                .then((s7) => {
+                                  return background.composite(s7, 30, 2469, [
+                                    Jimp.BLEND_DESTINATION_OVER,
+                                  ]);
+                                })
+                                .then((background) => {
+                                  Jimp.read(suits[7])
+                                    .then((s8) => {
+                                      return background.composite(
+                                        s8,
+                                        883,
+                                        2469,
+                                        [Jimp.BLEND_DESTINATION_OVER]
+                                      );
+                                    })
+                                    .then((background) => {
+                                      Jimp.read(suits[8]).then((s9) => {
+                                        return background
+                                          .composite(s9, 1736, 2469, [
+                                            Jimp.BLEND_DESTINATION_OVER,
+                                          ])
+                                          .getBase64Async(Jimp.MIME_JPEG)
+                                          .then((base64) => {
+                                            res.status(200).json(base64);
+                                          });
+                                      });
+                                    });
+                                });
+                            });
+                        });
                     });
                 });
             });
