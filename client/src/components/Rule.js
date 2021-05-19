@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import Approval from "./Approval"
 
 export default class Rule extends Component {
   state = {
     rule: null,
+    toBeApproved: null,
   };
 
   getRule = () => {
@@ -15,7 +16,7 @@ export default class Rule extends Component {
         this.setState({
           rule: response.data,
         });
-        console.log("this is the state", this.state.rule);
+        console.log("this is the state", this.state.rule.extensions.length);
       })
       .catch((err) => {
         console.log(err);
@@ -29,6 +30,9 @@ export default class Rule extends Component {
   render() {
     let canEdit = <></>;
     let isLoaded = <></>;
+    let hasBeenExtended = <></>;
+    // let canApprove = <></>;
+
     if (this.state.rule) {
       isLoaded = (
         <>
@@ -44,13 +48,30 @@ export default class Rule extends Component {
             <Link to={`/edit/${this.state.rule._id}`}>EDIT</Link>
           </>
         );
+        // canApprove = (
+        //   <>
+        //     <Approval extension={}/>
+        //   </>
+        // );
+      }
+      if (this.state.rule.extensions.length > 0) {
+        hasBeenExtended = this.state.rule.extensions.map((extension) => {
+          return (
+            <div key={extension._id}>
+              <h2>Extension by {extension.extendedBy.username}</h2>
+              <p>{extension.extension}</p>
+              {this.props.user._id === this.state.rule.createdBy._id? <><Approval rule={this.state.rule._id} extension={extension}/></>:<></>}
+            </div>
+          );
+        });
       }
     }
-    
+
     return (
       <div>
         {isLoaded}
         {canEdit}
+        {hasBeenExtended}
       </div>
     );
   }

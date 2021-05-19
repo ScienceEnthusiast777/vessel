@@ -34,7 +34,7 @@ router.get("/", (req,res,next)=>{
 })
 
 router.get("/rule/:id", (req, res, next)=>{
-  Rules.findById(req.params.id).populate('createdBy')
+  Rules.findById(req.params.id).populate('createdBy').populate('extensions.extendedBy')
   .then(rule=>{
     res.status(200).json(rule);
   })
