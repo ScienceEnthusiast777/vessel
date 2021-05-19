@@ -27,8 +27,6 @@ export default class Offerings extends Component {
     axios
       .get("/api/furnace/lesser")
       .then((res) => {
-        console.log(res.data)
-
         this.setState({
           waiting: false,
           lesserOfferings: res.data,
