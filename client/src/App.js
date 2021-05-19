@@ -10,6 +10,7 @@ import RulesCreate from "./components/RulesCreate"
 import RulesList from "./components/RulesList"
 import Restricted from "./components/Restricted";
 import Rule from "./components/Rule"
+import RulesEdit from "./components/RulesEdit"
 
 class App extends React.Component {
   state = {
@@ -52,6 +53,11 @@ class App extends React.Component {
             path="/rule/:id"
             user={this.state.user}
             component={Rule}
+          />
+          <Restricted
+            path="/edit/:id"
+            user={this.state.user}
+            component={RulesEdit}
           />
           <Route
             exact

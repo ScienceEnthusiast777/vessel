@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
+
 
 export default class Rule extends Component {
   state = {
@@ -38,7 +40,7 @@ export default class Rule extends Component {
       if (this.props.user._id === this.state.rule.createdBy._id) {
         canEdit = (
           <>
-            <button>EDIT</button>
+            <Link to={`/edit/${this.state.rule._id}`}>EDIT</Link>
           </>
         );
       }
