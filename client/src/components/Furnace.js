@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class jimp extends Component {
+export default class Furnace extends Component {
   state = {
     file: null,
   };

@@ -12,8 +12,9 @@ export default function NavBar(props) {
 
   return (
     <div className="Nav">
+    {props.user?<p>logged in as: {props.user.username}</p>:<></>}
       <img src="/images/logo.jpg" alt="logo" />
-      <ul>
+      <ul className="NavButtons">
         <li>
           <Link to="/">HOME</Link>
         </li>
@@ -36,6 +37,12 @@ export default function NavBar(props) {
             </li>
             <li>
               <Link to="/offerings">OFFERINGS</Link>
+            </li>
+            <li>
+              <Link to="/ruleslist">RULES SYSTEMS</Link>
+            </li>
+            <li>
+              <Link to="/rulescreate">CREATE RULES</Link>
             </li>
           </>
         )}

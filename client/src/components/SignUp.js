@@ -22,7 +22,6 @@ export default class SignUp extends Component {
     signup(username,password)
     .then(response=>{
         if(response.message){
-          console.log(response.message)
           this.setState({
             message: response.message,
             username: '',
@@ -34,6 +33,7 @@ export default class SignUp extends Component {
         }
     })
   }
+
   render() {
     return (
       <div>

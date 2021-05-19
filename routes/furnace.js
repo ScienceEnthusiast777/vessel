@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const Jimp = require("jimp");
 const multer = require("multer");
-const fs = require("fs");
-const app = require("../app");
+// const fs = require("fs");
+// const app = require("../app");
 const { RandomGenerator } = require("./middlewares");
-const { write } = require("jimp");
+// const { write } = require("jimp");
 const Card = require("../models/Card");
-const { base } = require("../models/Card");
+// const { base } = require("../models/Card");
 
 let template = "./image-processing/assets/major-template.jpg";
 let imgExport = "./image-processing/exports/export.jpg";
