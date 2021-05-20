@@ -54,12 +54,31 @@
   background-size: cover;
   height: 100vh; 
   border: solid white 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 120px;
+  padding-right: 120px;
 }
 
 .RandomCardImage{
-  width: 300px
+  margin-top: 200px;
+  width: 300px;
+  border: solid black 10px;
+  border-radius: 20px;
 }
 
+.BlackShadow{
+  width: 40vw;
+  padding: 30px;
+  background-color: black;
+  font-weight: bolder;
+  color: black;
+  font-size: 24px;
+  border-radius: 10px;
+  text-shadow: 0 0 8px #ffffff;
+}
 
 /* .Landing>img{
   width: 100%;

@@ -29,7 +29,7 @@ class App extends React.Component {
     console.log(this.state.user);
     return (
       <div className="App">
-        {/* <NavBar user={this.state.user} setUser={this.setUser} /> */}
+        <NavBar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Restricted
             path="/offerings"

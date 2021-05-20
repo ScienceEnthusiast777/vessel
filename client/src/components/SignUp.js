@@ -36,7 +36,7 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Landing">
         <form onSubmit={this.submitHandler}>
           <label htmlFor="username">Username: </label>
           <input 
