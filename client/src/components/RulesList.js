@@ -23,8 +23,8 @@ export default class RulesList extends Component {
         );
         let selection = [];
         for (let i = startIn; i < startIn + 5; i++) {
-          if (sorted.length < i) {
-            return;
+          if (sorted.length < i+1) {
+            break;
           }
           selection.push(sorted[i]);
         }
@@ -71,7 +71,6 @@ export default class RulesList extends Component {
         </>
       );
     }
-    console.log(this.state.rules);
     return (
       <div className="RulesPages">
         <div className="RulesPageContainer">

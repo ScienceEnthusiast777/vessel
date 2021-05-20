@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export default class Approval extends Component {
   state = {
-    // index: NaN,
     extension: null,
     ruleId: "",
   };
@@ -18,8 +17,6 @@ export default class Approval extends Component {
 
   handleApproval = () =>{
     const _id = this.state.extension._id;
-    console.log(_id)
-    // const index = this.state.index; 
     axios.put(`/api/rules/approve/${this.state.ruleId}`, {_id} )
     .then((response) => {
       this.props.history.push("/ruleslist");

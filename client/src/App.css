@@ -34,6 +34,7 @@
   list-style-type: none;
   padding: 5px;
   margin: 5px;
+  min-width: 120px;
   border: solid black 5px;
   border-radius: 15px;
 }
@@ -101,6 +102,7 @@ textarea{
 
 .BlackShadow {
   width: 40vw;
+  min-width: 600px;
   padding: 30px;
   background-color: black;
   font-weight: bolder;
