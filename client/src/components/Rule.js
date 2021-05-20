@@ -16,7 +16,6 @@ export default class Rule extends Component {
         this.setState({
           rule: response.data,
         });
-        console.log("this is the state", this.state.rule.extensions.length);
       })
       .catch((err) => {
         console.log(err);
@@ -25,7 +24,6 @@ export default class Rule extends Component {
 
   componentDidMount() {
     this.getRule();
-    console.log(this.props.user);
   }
   render() {
     let canEdit = <></>;
@@ -53,6 +51,7 @@ export default class Rule extends Component {
           return (
             <div key={extension._id}>
               <h2>Extension by {extension.extendedBy.username}</h2>
+              {extension.approved?<p>approved by author</p>:<p>awaiting approval</p>}
               <p>{extension.extension}</p>
               {this.props.user._id === this.state.rule.createdBy._id &&
               extension.approved === false ? (

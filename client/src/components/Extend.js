@@ -16,7 +16,6 @@ export default class RulesEdit extends Component {
       .get(`/api/rules/rule/${this.props.match.params.id}`)
       .then((response) => {
         const data = response.data;
-        console.log(response.data);
         this.setState({
           _id: data._id,
           name: data.name,
@@ -54,7 +53,6 @@ export default class RulesEdit extends Component {
   };
 
   componentDidMount() {
-    console.log("mounted");
     this.getRule();
   }
 
