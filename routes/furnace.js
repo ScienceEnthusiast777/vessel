@@ -260,4 +260,13 @@ router.get("/lesser", RandomGeneratoLesser(), (req, res, next) => {
     });
 });
 
+router.get("/landing", (req, res, next) => {
+  Card.aggregate([{ $sample: { size: 1 } }]).then((sample) => {
+    res.status(200).json(sample);
+  })
+  .catch((err)=>{
+    res.json(err);
+  })
+});
+
 module.exports = router;
