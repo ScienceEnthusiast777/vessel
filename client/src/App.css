@@ -3,13 +3,19 @@
 }
 
 .Nav {
+  position: fixed;
+  width: 100%;
   padding: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: white;
   border-bottom: dashed black 5px;
+}
+
+.Nav>img{
+  height:150px
 }
 
 .NavButtons>li{
@@ -28,4 +34,11 @@
   color: white;
   background-color: black;
   border-radius: 25px;
+}
+
+.Landing{
+}
+
+.Landing>img{
+  width: 100%;
 }
