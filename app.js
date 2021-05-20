@@ -8,7 +8,7 @@ require("./db");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
-
+const path = require('path');
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
@@ -82,6 +82,13 @@ app.use("/api/furnace", furnace);
 
 const auth = require("./routes/auth");
 app.use("/api/auth", auth)
+
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 
 
