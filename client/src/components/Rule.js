@@ -31,7 +31,6 @@ export default class Rule extends Component {
     let canEdit = <></>;
     let isLoaded = <></>;
     let hasBeenExtended = <></>;
-    // let canApprove = <></>;
 
     if (this.state.rule) {
       isLoaded = (

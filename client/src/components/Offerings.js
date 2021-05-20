@@ -54,7 +54,7 @@ export default class Offerings extends Component {
       );
     }
     if (this.state.waiting === true) {
-      isWaiting = <><div className="WhiteShadow"><img src="/images/loading.gif" alt="" /><p>LOADING</p></div></>;
+      isWaiting = <><div className="WhiteShadow"><img height="100px" src="/images/loading.gif" alt="" /><p>LOADING</p></div></>;
     }
     return (
       <div className="Landing">
@@ -70,6 +70,9 @@ export default class Offerings extends Component {
             {toLesserImage}
           </div>
           {isWaiting}
+          <div className="WhiteShadow">
+            <p>-HERE YOU MAY REQUEST A GREATER OFFERING OF CARDS FORGED IN THE FURNACE, OR A LESSER OFFERING OF SUPPLEMENTARY CARDS-</p>
+          </div>
         </div>
       </div>
     );

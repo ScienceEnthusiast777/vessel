@@ -66,17 +66,19 @@ export default class RulesList extends Component {
     if (this.state.loaded === true) {
       isLoaded = (
         <>
-          <RulesPage page={this.state.page} rules={this.state.rules} />
-          {`page: ${this.state.page+1}`}
+        <RulesPage page={this.state.page} rules={this.state.rules} />
+          {`page: ${this.state.page + 1}`}
         </>
       );
     }
     console.log(this.state.rules);
     return (
-      <div>
-        <button onClick={this.clickDownHandler}>PREVIOUS PAGE</button>
-        <button onClick={this.clickUpHandler}>NEXT PAGE</button>
-        {isLoaded}
+      <div className="RulesPages">
+        <div className="RulesPageContainer">
+            <button onClick={this.clickDownHandler}>PREVIOUS PAGE</button>
+            <button onClick={this.clickUpHandler}>NEXT PAGE</button>
+          {isLoaded}
+        </div>
       </div>
     );
   }
