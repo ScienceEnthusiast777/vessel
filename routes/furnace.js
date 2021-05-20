@@ -269,7 +269,6 @@ router.get("/landing", (req, res, next) => {
       Jimp.read(selection[0].imageData.buffer)
       .then((read)=>{return read.getBase64Async(Jimp.MIME_JPEG)
         .then((base64)=>{
-          console.log(base64)
           res.status(200).json(base64);
         })
       })  

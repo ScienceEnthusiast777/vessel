@@ -3,7 +3,6 @@ const { findByIdAndUpdate } = require("../models/Rules");
 const Rules = require("../models/Rules");
 
 router.post("/", (req, res, next) => {
-  // console.log(req.body);
   const { name, explanation } = req.body;
   const createdBy = req.user;
   if (!name) {
@@ -29,7 +28,6 @@ router.get("/", (req, res, next) => {
   Rules.find()
     .populate("createdBy")
     .then((rules) => {
-      // console.log("found rules : ", rules);
       res.status(200).json(rules);
     })
     .catch((err) => res.json(err));
@@ -72,14 +70,12 @@ router.put("/extend/:id", (req, res, next) => {
 
 router.put("/approve/:id", (req, res, next) => {
   const { _id } = req.body;
-  console.log('body',_id);
   Rules.findOneAndUpdate(
     { _id: req.params.id, "extensions._id": _id },
     { $set: { "extensions.$.approved": true } },
     {new:true}
   ).populate('extensions._id')
     .then((rule) => {
-      console.log('THIS IS THE RULE',rule)
       res.status(200).json(rule);
     })
     .catch((err) => {
