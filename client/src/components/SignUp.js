@@ -37,7 +37,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="Landing">
-        <form onSubmit={this.submitHandler}>
+        <form className="BlackShadowContainer" onSubmit={this.submitHandler}>
           <label htmlFor="username">Username: </label>
           <input 
           id="username"

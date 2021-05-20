@@ -12,10 +12,10 @@ router.post("/signup", (req, res, next) => {
       .status(400)
       .json({ message: "password must be atleast 8 characters" });
   }
-  if (username === "") {
+  if (username === "" || username.length > 8) {
     return res
       .status(400)
-      .json( {message: 'please choose a valid username (cannot be empty)' });
+      .json( {message: 'please choose a valid username (cannot be empty or more than 8 characters)' });
   }
   User.findOne({ username: username }).then((DBUser) => {
     if (DBUser !== null) {

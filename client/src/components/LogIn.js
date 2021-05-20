@@ -35,7 +35,7 @@ export default class LogIn extends Component {
   render() {
     return (
       <div className="Landing">
-        <form onSubmit={this.submitHandler}>
+        <form className="BlackShadow" onSubmit={this.submitHandler}>
           <label htmlFor="username">Username: </label>
           <input
             type="text"

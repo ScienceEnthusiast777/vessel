@@ -14,33 +14,31 @@
   border-bottom: dashed black 5px;
 }
 
-.Display{
+.Display {
   font-weight: bold;
 }
 
-.Display>img{
-  height:150px
-  
+.Display > img {
+  height: 150px;
 }
 
-.NavButtons{
+.NavButtons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-.NavButtons>li{
-  
+.NavButtons > li {
   color: black;
   font-weight: bold;
   list-style-type: none;
   padding: 5px;
   margin: 5px;
-  border: solid black  5px;
+  border: solid black 5px;
   border-radius: 15px;
 }
 
-.RuleLink{
+.RuleLink {
   margin: 20px;
   padding: 5px 20px;
   color: white;
@@ -48,11 +46,11 @@
   border-radius: 25px;
 }
 
-.Landing{
+.Landing {
   background-image: url(landing.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh; 
+  height: 100vh;
   border: solid white 30px;
   display: flex;
   flex-direction: row;
@@ -62,24 +60,62 @@
   padding-right: 120px;
 }
 
-.RandomCardImage{
+.RandomCardImage {
   margin-top: 200px;
   width: 300px;
   border: solid black 10px;
   border-radius: 20px;
 }
 
-.BlackShadow{
+.BlackShadow {
   width: 40vw;
   padding: 30px;
   background-color: black;
   font-weight: bolder;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 24px;
   border-radius: 10px;
   text-shadow: 0 0 8px #ffffff;
 }
 
+
+.WhiteShadow {
+  width: 40vw;
+  padding: 30px;
+  background-color: rgb(255, 255, 255);
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  border-radius: 10px;
+  text-shadow: 0 0 8px #000000;
+}
+
+.BlackContainer{
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  border-radius: 10px;
+  text-shadow: 0 0 8px #000000;
+}
+
+input {
+  border: 3px solid #555;
+  width: 300px;
+}
 /* .Landing>img{
   width: 100%;
 } */

@@ -33,12 +33,17 @@ export default class Furnace extends Component {
     let uploadButton = <></>; 
     if(this.state.file){uploadButton = <button onClick={this.Upload}>upload</button>}
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+      <div className="Landing">
+      <div className="BlackContainer">
+      <form className="BlackShadow" onSubmit={this.handleSubmit} encType="multipart/form-data">
           <label htmlFor="file">File</label>
           <input type="file" accept=".jpg,.png" id="file" onChange={this.onChange} />
         </form>
-        {uploadButton}
+        <div className="WhiteShadow">
+          <p>-HERE YOU MAY OFFER UP YOUR IMAGES TO THE VESSEL'S FURNACE TO BE FORGED INTO NEW CARDS-</p>
+          {uploadButton}
+        </div>
+      </div>
       </div>
     );
   }
