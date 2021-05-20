@@ -261,12 +261,20 @@ router.get("/lesser", RandomGeneratoLesser(), (req, res, next) => {
 });
 
 router.get("/landing", (req, res, next) => {
-  Card.aggregate([{ $sample: { size: 1 } }]).then((sample) => {
-    res.status(200).json(sample);
-  })
-  .catch((err)=>{
-    res.json(err);
-  })
+  Card.aggregate([{ $sample: { size: 1 } }])
+    .then((sample) => {
+      selection = [...sample];
+      Jimp.read(selection[0].imageData.buffer)
+      .then((read)=>{return read.getBase64Async(Jimp.MIME_JPEG)
+        .then((base64)=>{
+          console.log(base64)
+          res.status(200).json(base64);
+        })
+      })  
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 module.exports = router;

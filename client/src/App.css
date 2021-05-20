@@ -56,6 +56,10 @@
   border: solid white 30px;
 }
 
+.RandomCardImage{
+  width: 300px
+}
+
 
 /* .Landing>img{
   width: 100%;

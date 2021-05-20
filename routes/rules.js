@@ -72,7 +72,6 @@ router.put("/extend/:id", (req, res, next) => {
 
 router.put("/approve/:id", (req, res, next) => {
   const { _id } = req.body;
-  // const set = `'extension.${index}.approved':true`;
   console.log('body',_id);
   Rules.findOneAndUpdate(
     { _id: req.params.id, "extensions._id": _id },
