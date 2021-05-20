@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { response } from "express";
 import React, { Component } from "react";
 
 export default class RulesCreate extends Component {

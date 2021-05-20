@@ -10,7 +10,6 @@ export default class RandomCard extends Component {
     axios.get('/api/furnace/landing')
     .then((response)=>{
       this.setState({card: response.data})
-      // console.log(this.state.card)
     })
     .catch((err)=>{console.log(err)})
   }
@@ -19,7 +18,6 @@ export default class RandomCard extends Component {
     let cardDisplay = <></>;
     if (this.state.card) {
       cardDisplay = <><img className="RandomCardImage" src={this.state.card} alt="" /></>;
-      console.log('done')
     }
     return <div>
       {cardDisplay}

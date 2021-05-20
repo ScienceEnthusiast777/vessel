@@ -8,7 +8,6 @@ export default class Furnace extends Component {
   };
 
   Upload = (e) => {
-    console.log(this.state.file.name);
     let file = this.state.file;
     if (file) {
       this.setState({
@@ -32,7 +31,6 @@ export default class Furnace extends Component {
 
   onChange = (e) => {
     const f = e.target.files[0];
-    console.log(f);
     this.setState({
       file: f,
     });

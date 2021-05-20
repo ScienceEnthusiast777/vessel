@@ -16,19 +16,19 @@ export default class RulesList extends Component {
       .then((response) => {
         let startIn = 0;
         if (this.state.page > 0) {
-          startIn = this.state.page * 2 + 1;
+          startIn = this.state.page * 5;
         }
         let sorted = response.data.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
         let selection = [];
-        for (let i = startIn; i < startIn + 5; i++) {
+        for (let i = startIn; i < startIn + 4; i++) {
           if (sorted.length < i+1) {
             break;
           }
           selection.push(sorted[i]);
         }
-        let noOfPages = Math.round(response.data.length / 5);
+        let noOfPages = Math.ceil(response.data.length / 5);
         this.setState({
           rules: selection,
           pages: noOfPages,

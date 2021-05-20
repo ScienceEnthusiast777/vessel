@@ -1,16 +1,11 @@
 const router = require("express").Router();
 const Jimp = require("jimp");
 const multer = require("multer");
-// const fs = require("fs");
-// const app = require("../app");
 const { RandomGenerator, RandomGeneratoLesser } = require("./middlewares");
-// const { write } = require("jimp");
 const Card = require("../models/Card");
-// const { base } = require("../models/Card");
 
 let template = "./image-processing/assets/major-template.jpg";
 let lesserTemplate = "./image-processing/assets/lesser/Lesser-sheet.jpg";
-// let imgExport = "./image-processing/exports/export.jpg";
 let blank = "./image-processing/assets/blank.jpg";
 
 router.get("/", (req, res, next) => {
@@ -269,7 +264,6 @@ router.get("/landing", (req, res, next) => {
       Jimp.read(selection[0].imageData.buffer)
       .then((read)=>{return read.getBase64Async(Jimp.MIME_JPEG)
         .then((base64)=>{
-          console.log(base64)
           res.status(200).json(base64);
         })
       })  
