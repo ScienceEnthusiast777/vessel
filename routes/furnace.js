@@ -154,7 +154,7 @@ router.post("/", RandomGenerator(), upload.single("file"), (req, res, next) => {
                         "./image-processing/assets/fonts/large/alagard.ttf.fnt"
                       ).then((font) => {
                         card
-                          .print(font, 225, 25, username)
+                          .print(font, 200, 25, username)
                           .print(font, 225, 800, res.locals.randomVals[0])
                           .print(font, 500, 800, res.locals.randomVals[1]);
                         card.getBufferAsync(Jimp.MIME_JPEG).then((buffer) => {

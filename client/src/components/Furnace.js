@@ -4,6 +4,7 @@ import axios from "axios";
 export default class Furnace extends Component {
   state = {
     file: null,
+    loading: false
   };
 
   Upload = (e) => {
