@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Approval from "./Approval"
+import Approval from "./Approval";
 
 export default class Rule extends Component {
   state = {
@@ -44,14 +44,9 @@ export default class Rule extends Component {
       if (this.props.user._id === this.state.rule.createdBy._id) {
         canEdit = (
           <>
-            <Link to={`/edit/${this.state.rule._id}`}>EDIT</Link>
+            <Link to={`/edit/${this.state.rule._id}`}>EDIT THESE RULES</Link>
           </>
         );
-        // canApprove = (
-        //   <>
-        //     <Approval extension={}/>
-        //   </>
-        // );
       }
       if (this.state.rule.extensions.length > 0) {
         hasBeenExtended = this.state.rule.extensions.map((extension) => {
@@ -59,7 +54,18 @@ export default class Rule extends Component {
             <div key={extension._id}>
               <h2>Extension by {extension.extendedBy.username}</h2>
               <p>{extension.extension}</p>
-              {this.props.user._id === this.state.rule.createdBy._id && extension.approved === false ? <><Approval history ={this.props.history} rule={this.state.rule._id} extension={extension}/></>:<></>}
+              {this.props.user._id === this.state.rule.createdBy._id &&
+              extension.approved === false ? (
+                <>
+                  <Approval
+                    history={this.props.history}
+                    rule={this.state.rule._id}
+                    extension={extension}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           );
         });
@@ -67,10 +73,15 @@ export default class Rule extends Component {
     }
 
     return (
-      <div>
-        {isLoaded}
-        {canEdit}
-        {hasBeenExtended}
+      
+        <div className="RulesPages">
+          <div className="RulesPageContainer">
+          <div className="BlackShadow FormFormat">
+            {isLoaded}
+            {canEdit}
+            {hasBeenExtended}
+          </div>
+        </div>
       </div>
     );
   }

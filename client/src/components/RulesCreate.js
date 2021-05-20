@@ -40,7 +40,10 @@ export default class RulesCreate extends Component {
     return (
       <div className="RulesPages">
         <div className="RulesPageContainer">
-          <form className="BlackShadow FormFormat" onSubmit={this.submitHandler}>
+          <form
+            className="BlackShadow FormFormat"
+            onSubmit={this.submitHandler}
+          >
             <label htmlFor="name">Name the ruleset: </label>
             <input
               type="text"
@@ -51,8 +54,8 @@ export default class RulesCreate extends Component {
             />
             <label htmlFor="name">Explanation: </label>
             <textarea
-            colums="100"
-            rows="25"
+              colums="100"
+              rows="25"
               type="text"
               name="explanation"
               id="explanation"

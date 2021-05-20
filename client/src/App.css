@@ -19,7 +19,7 @@
 }
 
 .Display > img {
-  height: 100px;
+  height: 120px;
 }
 
 .NavButtons {
@@ -62,6 +62,9 @@ textarea{
   font-size: 24px;
   border-radius: 10px;
   text-shadow: 0 0 8px #ffffff;
+  padding: 3px;
+  margin: 15px;
+  width: 1250px;
 }
 
 .Landing {
