@@ -54,7 +54,7 @@ export default class Offerings extends Component {
       );
     }
     if (this.state.waiting === true) {
-      isWaiting = <><div className="WhiteShadow"><img height="100px" src="/images/loading.gif" alt="" /><p>LOADING</p></div></>;
+      isWaiting = <><div className="WhiteShadow"><img height="100px" src="/images/loading.gif" alt="loading" /><p>LOADING</p></div></>;
     }
     return (
       <div className="Landing">
