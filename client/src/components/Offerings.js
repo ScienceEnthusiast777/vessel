@@ -54,15 +54,26 @@ export default class Offerings extends Component {
       );
     }
     if (this.state.waiting === true) {
-      isWaiting = <p>please wait</p>;
+      isWaiting = <><div className="WhiteShadow"><img height="100px" src="/images/loading.gif" alt="loading" /><p>LOADING</p></div></>;
     }
     return (
-      <div>
-        <button onClick={this.download}>RECIEVE A GREATER OFFERING</button>
-        {toImage}
-        <button onClick={this.lesserDownload}>RECIEVE A LESSER OFFERING</button>
-        {toLesserImage}
-        {isWaiting}
+      <div className="Landing">
+        <div className="BlackContainer">
+          <div className="BlackShadow">
+            <button onClick={this.download}>RECIEVE A GREATER OFFERING</button>
+            {toImage}
+          </div>
+          <div className="BlackShadow">
+            <button onClick={this.lesserDownload}>
+              RECIEVE A LESSER OFFERING
+            </button>
+            {toLesserImage}
+          </div>
+          {isWaiting}
+          <div className="WhiteShadow">
+            <p>-HERE YOU MAY REQUEST A GREATER OFFERING OF CARDS FORGED IN THE FURNACE, OR A LESSER OFFERING OF SUPPLEMENTARY CARDS-</p>
+          </div>
+        </div>
       </div>
     );
   }

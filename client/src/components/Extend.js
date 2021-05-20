@@ -63,11 +63,18 @@ export default class RulesEdit extends Component {
     if (this.state._id) {
       isLoaded = (
         <>
-          <h1>{this.state.name}</h1>
-          <h3>{this.state.explanation}</h3>
-          <form onSubmit={this.submitHandler}>
+          <div className="WhiteShadow FormFormat">
+            <p>{this.state.name}</p>
+            <p>{this.state.explanation}</p>
+          </div>
+          <form
+            className="BlackShadow FormFormat"
+            onSubmit={this.submitHandler}
+          >
             <label htmlFor="name">YOUR EXTENSION TO "{this.state.name}" </label>
-            <input
+            <textarea
+              colums="100"
+              rows="25"
               type="text"
               name="extension"
               id="name"
@@ -80,6 +87,10 @@ export default class RulesEdit extends Component {
         </>
       );
     }
-    return <div>{isLoaded}</div>;
+    return (
+      <div className="RulesPages">
+        <div className="RulesPageContainer">{isLoaded}</div>
+      </div>
+    );
   }
 }

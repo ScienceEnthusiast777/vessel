@@ -12,6 +12,7 @@ import Restricted from "./components/Restricted";
 import Rule from "./components/Rule"
 import RulesEdit from "./components/RulesEdit"
 import Extend from "./components/Extend"
+import Landing from "./components/Landing"
 
 class App extends React.Component {
   state = {
@@ -64,6 +65,11 @@ class App extends React.Component {
             path="/extend/:id"
             user={this.state.user}
             component={Extend}
+          />
+          <Route
+            exact
+            path="/"
+            render={(props) => <Landing setUser={this.setUser} {...props} />}
           />
           <Route
             exact

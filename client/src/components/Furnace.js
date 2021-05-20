@@ -4,41 +4,80 @@ import axios from "axios";
 export default class Furnace extends Component {
   state = {
     file: null,
+    loading: false,
   };
 
   Upload = (e) => {
-    console.log(this.state.file.name)
+    console.log(this.state.file.name);
     let file = this.state.file;
     if (file) {
+      this.setState({
+        loading: true,
+      });
       let data = new FormData();
-      data.append("name", this.state.file.name)
+      data.append("name", this.state.file.name);
       data.append("file", file);
       axios
         .post("/api/furnace", data)
-        .then((response) => console.log('processed the file: ',response.data))
-        .catch((err)=>console.log(err));
+        .then((response) => {
+          console.log("processed the file: ", response.data);
+          this.setState({
+            loading: false,
+            file: null
+          });
+        })
+        .catch((err) => console.log(err));
     }
-  }
+  };
 
-    onChange = (e) => {
-      const f = e.target.files[0];
-      console.log(f)
-      this.setState({
-        file: f
-      });
-    };
-  
+  onChange = (e) => {
+    const f = e.target.files[0];
+    console.log(f);
+    this.setState({
+      file: f,
+    });
+  };
 
   render() {
-    let uploadButton = <></>; 
-    if(this.state.file){uploadButton = <button onClick={this.Upload}>upload</button>}
+    let isLoading = <></>;
+    let uploadButton = <></>;
+    if (this.state.loading) {
+      isLoading = (
+        <>
+          <div>
+            <img height="100px" src="/images/loading.gif" alt="loading" />
+          </div>
+        </>
+      );
+    }
+    if (this.state.file) {
+      uploadButton = <button onClick={this.Upload}>upload</button>;
+    }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-          <label htmlFor="file">File</label>
-          <input type="file" accept=".jpg,.png" id="file" onChange={this.onChange} />
-        </form>
-        {uploadButton}
+      <div className="Landing">
+        <div className="BlackContainer">
+          <form
+            className="BlackShadow"
+            onSubmit={this.handleSubmit}
+            encType="multipart/form-data"
+          >
+            <label htmlFor="file">File</label>
+            <input
+              type="file"
+              accept=".jpg,.png"
+              id="file"
+              onChange={this.onChange}
+            />
+          </form>
+          <div className="WhiteShadow">
+            <p>
+              -HERE YOU MAY OFFER UP YOUR IMAGES TO THE VESSEL'S FURNACE TO BE
+              FORGED INTO NEW CARDS-
+            </p>
+            {uploadButton}
+            {isLoading}
+          </div>
+        </div>
       </div>
     );
   }
