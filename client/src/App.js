@@ -27,6 +27,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <div className="Screen">
       <div className="App">
         <NavBar user={this.state.user} setUser={this.setUser} />
         <Switch>
@@ -81,6 +82,7 @@ class App extends React.Component {
             render={(props) => <LogIn setUser={this.setUser} {...props} />}
           />
         </Switch>
+      </div>
       </div>
     );
   }
