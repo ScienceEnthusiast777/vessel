@@ -126,6 +126,20 @@ textarea{
   justify-content: space-evenly;
 }
 
+.BlackShadowRule {
+  width: 40vw;
+  padding: 30px;
+  background-color: black;
+  font-weight: bolder;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  border-radius: 10px;
+  text-shadow: 0 0 8px #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .FormFormat{
   display: flex;
   flex-direction: column;

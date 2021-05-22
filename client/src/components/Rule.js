@@ -75,7 +75,7 @@ export default class Rule extends Component {
       
         <div className="RulesPages">
           <div className="RulesPageContainer">
-          <div className="BlackShadow FormFormat">
+          <div className="BlackShadowRule FormFormat">
             {isLoaded}
             {canEdit}
             {hasBeenExtended}
