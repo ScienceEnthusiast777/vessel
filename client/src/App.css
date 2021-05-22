@@ -1,9 +1,18 @@
+.Screen {
+  max-width: 1440px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
 }
 
 .Nav {
-  position: fixed;
   width: 100%;
   padding: 30px;
   display: flex;
@@ -14,13 +23,14 @@
   border-bottom: dashed black 5px;
 }
 
+.Display img{
+  width: 200px;
+}
+
 .Display {
   font-weight: bold;
 }
 
-.Display > img {
-  height: 120px;
-}
 
 .NavButtons {
   display: flex;
@@ -31,10 +41,10 @@
 .NavButtons > li {
   color: black;
   font-weight: bold;
+  font-size: 15px;
   list-style-type: none;
   padding: 5px;
   margin: 5px;
-  min-width: 120px;
   border: solid black 5px;
   border-radius: 15px;
 }
@@ -48,7 +58,7 @@
 }
 
 .RulesPageContainer{
-  margin-top: 300px;
+  margin-top: 15px;
 }
 
 textarea{
@@ -65,7 +75,7 @@ textarea{
   text-shadow: 0 0 8px #ffffff;
   padding: 3px;
   margin: 15px;
-  width: 1250px;
+  width: 100%;
 }
 
 .Landing {
@@ -77,6 +87,7 @@ textarea{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-items: center;
   justify-content: space-around;
   padding-left: 120px;
   padding-right: 120px;
@@ -94,7 +105,7 @@ textarea{
 
 .RandomCardImage {
   margin: 200px;
-  width: 300px;
+  width: 40%;
   border: solid black 10px;
   border-radius: 20px;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.514);
@@ -102,12 +113,12 @@ textarea{
 
 .BlackShadow {
   width: 40vw;
-  min-width: 600px;
+  max-height: 60vh;
   padding: 30px;
   background-color: black;
   font-weight: bolder;
   color: rgb(255, 255, 255);
-  font-size: 24px;
+  font-size: 15px;
   border-radius: 10px;
   text-shadow: 0 0 8px #ffffff;
   display: flex;
@@ -126,13 +137,13 @@ textarea{
   background-color: rgb(255, 255, 255);
   font-weight: bolder;
   color: rgb(0, 0, 0);
-  font-size: 24px;
+  font-size: 15px;
   border-radius: 10px;
   text-shadow: 0 0 8px #000000;
 }
 
 .BlackContainer{
-  margin-top: 270px;
+  margin-top: 30px;
   background-color: black;
   border-radius: 10px;
   padding: 10px;
@@ -158,6 +169,3 @@ input {
   border: 3px solid #555;
   width: 300px;
 }
-/* .Landing>img{
-  width: 100%;
-} */
