@@ -1,7 +1,8 @@
 # vessel
 
 A prototype for an application that hosts a randomly generated card game built with user input. 
-Users can upload images to have them generated into cards with random attributes, and create and share rule systems with others.
+Users can upload images to have them generated into cards with random attributes, and create and share rule systems with others. The purpose of this project
+was mainly to learn how to manipulate image files with a package called Jimp (https://www.npmjs.com/package/jimp?activeTab=readme) 
 
 Users can create an account and once logged in can upload an image in the 'furnace' section. This gets uploaded and processed in to a card
 using Jimp to create a composite image from various randomly generated elements (as well as the username) in the backend, 
