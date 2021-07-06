@@ -11,7 +11,7 @@ axios.get('/api/auth/loggedin')
   const user = response.data;
   ReactDOM.render(
     <BrowserRouter>
-      <App className="Index" user={user}/>
+      <App user={user}/>
     </BrowserRouter>,
     document.getElementById('root')
   );

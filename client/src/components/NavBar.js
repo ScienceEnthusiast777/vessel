@@ -11,7 +11,7 @@ export default function NavBar(props) {
   }
 
   return (
-    <div className="Nav">
+    <div className="bg-white">
     <div className="Display">
     {props.user?<p>logged in as: {props.user.username}</p>:<></>}
       <img src="/images/logo.jpg" alt="logo" />
