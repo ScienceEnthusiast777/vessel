@@ -68,7 +68,7 @@ export default class SignUp extends Component {
             </div>
           </form>
           {this.state.message && (
-            <p className="WhiteShadow">{this.state.message}</p>
+            <p>{this.state.message}</p>
           )}
         </div>
       </div>
