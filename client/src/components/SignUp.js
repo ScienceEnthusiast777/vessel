@@ -43,7 +43,7 @@ export default class SignUp extends Component {
             <div>
               <label htmlFor="username">Username: </label>
               <input
-                className="border border-black mr-2"
+                className="border border-black m-2"
                 id="username"
                 type="text"
                 name="username"
@@ -52,7 +52,7 @@ export default class SignUp extends Component {
               />
               <label htmlFor="password">Password: </label>
               <input
-                className="border border-black mr-2"
+                className="border border-black m-2"
                 id="password"
                 type="password"
                 name="password"

@@ -43,7 +43,7 @@ export default class LogIn extends Component {
             <div>
               <label htmlFor="username">Username: </label>
               <input
-                className="border border-black mr-2"
+                className="border border-black m-2"
                 type="text"
                 id="username"
                 name="username"
@@ -52,7 +52,7 @@ export default class LogIn extends Component {
               />
               <label htmlFor="password">Password: </label>
               <input
-                className="border border-black mr-2"
+                className="border border-black m-2"
                 type="password"
                 id="password"
                 name="password"

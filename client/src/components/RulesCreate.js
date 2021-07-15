@@ -37,14 +37,15 @@ export default class RulesCreate extends Component {
 
   render() {
     return (
-      <div className="RulesPages">
-        <div className="RulesPageContainer">
+      <div className="flex flex-col items-center mt-20 h-screen">
+        <div className="w-1/2 bg-white border border-black flex flex-col items-center m-5 mt-20 mb-20 p-2">
           <form
-            className="BlackShadow FormFormat"
+            className="w-full flex flex-col items-center font-bold"
             onSubmit={this.submitHandler}
           >
             <label htmlFor="name">Name the ruleset: </label>
             <input
+              className="border border-black m-2"
               type="text"
               name="name"
               id="name"
@@ -53,6 +54,7 @@ export default class RulesCreate extends Component {
             />
             <label htmlFor="name">Explanation: </label>
             <textarea
+              className="w-full border border-black m-2"
               colums="100"
               rows="25"
               type="text"
@@ -61,7 +63,7 @@ export default class RulesCreate extends Component {
               value={this.state.explanation}
               onChange={this.changeHandler}
             />
-            <button type="submit">CREATE RULES</button>
+            <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44" type="submit">CREATE RULES</button>
             {this.state.message && <p>{this.state.message}</p>}
           </form>
         </div>

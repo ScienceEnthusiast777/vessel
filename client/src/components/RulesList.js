@@ -72,10 +72,10 @@ export default class RulesList extends Component {
       );
     }
     return (
-      <div className="RulesPages">
-        <div className="RulesPageContainer">
-            <button onClick={this.clickDownHandler}>PREVIOUS PAGE</button>
-            <button onClick={this.clickUpHandler}>NEXT PAGE</button>
+      <div className="flex flex-col items-center mt-20 h-screen">
+        <div className="bg-white flex flex-col items-center border border-black border-5 m-5 mt-20 mb-20 p-6">
+            <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44  font-bold" onClick={this.clickDownHandler}>PREVIOUS PAGE</button>
+            <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44  font-bold" onClick={this.clickUpHandler}>NEXT PAGE</button>
           {isLoaded}
         </div>
       </div>
