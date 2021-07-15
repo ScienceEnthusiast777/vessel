@@ -41,38 +41,38 @@ export default class Offerings extends Component {
     let toLesserImage = <></>;
     if (this.state.offerings) {
       toImage = (
-        <a download="greater-offering.jpg" href={this.state.offerings}>
+        <a className="border border-5 border-black font-bold p-1" download="greater-offering.jpg" href={this.state.offerings}>
           A GREATER OFFERING
         </a>
       );
     }
     if (this.state.lesserOfferings) {
       toLesserImage = (
-        <a download="lesser-offering.jpg" href={this.state.lesserOfferings}>
+        <a className="border border-5 border-black font-bold p-1" download="lesser-offering.jpg" href={this.state.lesserOfferings}>
           A LESSER OFFERING
         </a>
       );
     }
     if (this.state.waiting === true) {
-      isWaiting = <><div className="WhiteShadow"><img height="100px" src="/images/loading.gif" alt="loading" /><p>LOADING</p></div></>;
+      isWaiting = <><div className="border border-5 border-white rounded-lg"><img height="100px" src="/images/loading.gif" alt="loading" /></div></>;
     }
     return (
-      <div className="Landing">
-        <div className="BlackContainer">
-          <div className="BlackShadow">
-            <button onClick={this.download}>RECIEVE A GREATER OFFERING</button>
+      <div className="flex flex-col items-center mt-20 h-screen">
+        <div className="w-1/2 bg-white border border-black flex flex-col items-center m-5 mt-20 mb-20 p-2">
+          <div className="flex flex-col items-center m-5 mt-5 mb-5">
+            <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44  font-bold" onClick={this.download}>RECIEVE A GREATER OFFERING</button>
             {toImage}
           </div>
-          <div className="BlackShadow">
-            <button onClick={this.lesserDownload}>
+          <div className="flex flex-col items-center m-5 mt-5 mb-5">
+            <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44  font-bold" onClick={this.lesserDownload}>
               RECIEVE A LESSER OFFERING
             </button>
             {toLesserImage}
           </div>
-          {isWaiting}
-          <div className="WhiteShadow">
+          <div className="font-bold p-3">
             <p>-HERE YOU MAY REQUEST A GREATER OFFERING OF CARDS FORGED IN THE FURNACE, OR A LESSER OFFERING OF SUPPLEMENTARY CARDS-</p>
           </div>
+          {isWaiting}
         </div>
       </div>
     );

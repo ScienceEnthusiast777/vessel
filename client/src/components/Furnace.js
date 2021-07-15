@@ -52,10 +52,10 @@ export default class Furnace extends Component {
       uploadButton = <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44" onClick={this.Upload}>upload</button>;
     }
     return (
-      <div className="flex flex-row justify-center mt-20 h-screen">
-        <div className="m-5 mt-20 mb-20">
+      <div className="flex flex-col items-center mt-20 h-screen">
+        <div className="bg-white flex flex-col items-center border border-black border-5 m-5 mt-20 mb-20 p-3">
           <form
-            className="flex flex-col w-52 font-bold"
+            className="flex flex-col items-center w-52 font-bold"
             onSubmit={this.handleSubmit}
             encType="multipart/form-data"
           >
@@ -68,7 +68,7 @@ export default class Furnace extends Component {
               onChange={this.onChange}
             />
           </form>
-          <div className="font-bold mt-3">
+          <div className="flex flex-col items-center font-bold mt-3">
             <p>
               -HERE YOU MAY OFFER UP YOUR IMAGES TO THE VESSEL'S FURNACE TO BE
               FORGED INTO NEW CARDS-
