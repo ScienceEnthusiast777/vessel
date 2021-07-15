@@ -15,7 +15,7 @@ export default function NavBar(props) {
         <div>
           <img className="h-24 w-300px" src="/images/logo.jpg" alt="logo" />
         </div>
-        <ul className="NavButtons">
+        <ul>
           <li className="cursor-pointer whitespace-nowrap border border-4 hover:border-black m-2 p-1">
             <Link to="/">HOME</Link>
           </li>
