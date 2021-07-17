@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
@@ -27,8 +26,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="Screen">
-      <div className="App">
+      <div className="bg-checkered bg-cover pb-40">
         <NavBar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Restricted
@@ -82,7 +80,6 @@ class App extends React.Component {
             render={(props) => <LogIn setUser={this.setUser} {...props} />}
           />
         </Switch>
-      </div>
       </div>
     );
   }

@@ -34,12 +34,16 @@ export default class LogIn extends Component {
 
   render() {
     return (
-      <div className="Landing">
-        <div>
-          <form className="BlackShadow" onSubmit={this.submitHandler}>
-            <div className="FormFormat">
+      <div className="flex flex-row justify-center mt-20 h-screen">
+        <div className="m-5 mt-20 mb-20">
+          <form
+            className="flex flex-col w-52 font-bold"
+            onSubmit={this.submitHandler}
+          >
+            <div>
               <label htmlFor="username">Username: </label>
               <input
+                className="border border-black m-2"
                 type="text"
                 id="username"
                 name="username"
@@ -48,16 +52,19 @@ export default class LogIn extends Component {
               />
               <label htmlFor="password">Password: </label>
               <input
+                className="border border-black m-2"
                 type="password"
                 id="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.changeHandler}
               />
-              <button type="submit">LOG IN</button>
+              <button className="cursor-pointer border hover:border-black mt-2 mb-2 p-2 w-44" type="submit">LOG IN</button>
             </div>
           </form>
-          {this.state.message && <p className="WhiteShadow">{this.state.message}</p>}
+          {this.state.message && (
+            <p>{this.state.message}</p>
+          )}
         </div>
       </div>
     );

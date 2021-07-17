@@ -25,7 +25,7 @@ export default class Approval extends Component {
 
   render() {
     return <div>
-      {this.state.extension?<><button onClick={this.handleApproval}>approve {this.state.extension.extendedBy.username}'s extension of your rule system</button></>:<></>}
+      {this.state.extension?<><button className="cursor-pointer border font-bold hover:border-black p-2" onClick={this.handleApproval}>approve {this.state.extension.extendedBy.username}'s extension of your rule system</button></>:<></>}
     </div>;
   }
 }
