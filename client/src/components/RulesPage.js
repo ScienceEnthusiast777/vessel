@@ -7,7 +7,7 @@ export default function RulesPage(props) {
     <div>
       {props.rules.map(rule=>{
         return (
-          <div className="IndividualRule" key={rule._id}>
+          <div className="border border-black p-3 m-3" key={rule._id}>
           <h1><Link to={`/rule/${rule._id}`} >{rule.name}</Link></h1>
           {rule.extensions.length>0?<p>This ruleset has been extended: {rule.extensions.length} time(s)</p>:<></>}
           <p>created by : {rule.createdBy.username}</p>
