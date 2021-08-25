@@ -70,7 +70,7 @@ export default class Offerings extends Component {
             {toLesserImage}
           </div>
           <div className="font-bold p-3">
-            <p>-HERE YOU MAY REQUEST A GREATER OFFERING OF CARDS FORGED IN THE FURNACE, OR A LESSER OFFERING OF SUPPLEMENTARY CARDS-</p>
+            <p>-Here you can download a 'Greater Offering': printable sheets drawn at random from the database of user generated cards. Or a 'Lesser Offering': printable sheets of supplementary cards with randomly generated suits-</p>
           </div>
           {isWaiting}
         </div>

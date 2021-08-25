@@ -70,8 +70,7 @@ export default class Furnace extends Component {
           </form>
           <div className="flex flex-col items-center font-bold mt-3">
             <p>
-              -HERE YOU MAY OFFER UP YOUR IMAGES TO THE VESSEL'S FURNACE TO BE
-              FORGED INTO NEW CARDS-
+              -Here you can upload images that will be used to generate new cards and added to the Vessel's database. Each card has a selection of symbols and numbers generated at random-
             </p>
             {uploadButton}
             {isLoading}

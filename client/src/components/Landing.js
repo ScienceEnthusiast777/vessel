@@ -13,7 +13,7 @@ export default class Landing extends Component {
               STATS ARE UNIQUE BASED ON A RANGE OF VALUES AND SYMBOLS. 
             </p>
             <p className="m-1 mb-10">
-              VISIT THE <strong>FURNACE</strong> TO UPLOAD IMAGES TO BE FORGED INTO CARDS, AND
+              VISIT THE <strong>FURNACE</strong> TO UPLOAD IMAGES TO BE CONVERTED INTO CARDS, AND
               THE <strong>OFFERINGS</strong> PAGE TO REQUEST PRINTABLE CARD SHEETS
             </p>
             <p className="m-1 pb-20">
