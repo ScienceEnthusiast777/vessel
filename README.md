@@ -3,8 +3,7 @@
 deployed version: https://the-vessel.herokuapp.com/
 </br>
 A prototype for an application that hosts a randomly generated card game built with user input. 
-Users can upload images to have them generated into cards with random attributes, and create and share rule systems with others. The purpose of this project
-was mainly to learn how to manipulate image files with a package called Jimp (https://www.npmjs.com/package/jimp?activeTab=readme) 
+Users can upload images to have them generated into cards with random attributes, and create and share rule systems with others.
 </br>
 <img src="https://github.com/atrathbone/atrathbone/blob/main/Vessel-screengrab.PNG?raw=true" height="75%" width="75%"/>
 </br>
